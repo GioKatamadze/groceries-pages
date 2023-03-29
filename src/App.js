@@ -5,7 +5,7 @@ import Checkout from "./Pages/Checkout/CheckoutPage.jsx";
 
 function App() {
   return (
-    <div className="App" style={{ maxWidth: "100%", height: "100%" }}>
+    <div className="App" style={{ maxWidth: "100vw", height: "100%" }}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />

@@ -1,14 +1,20 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.div`
-  width: 90vw;
+  width: 100vw;
   height: max-content;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-  color: black;
-  margin-top: 10vh;
+  justify-content: center;
+  .mainWrapper {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    color: black;
+    margin-top: 10vh;
+  }
 
   .title {
     font-size: 20px;
