@@ -2,55 +2,59 @@ import styled from "styled-components";
 
 const StyledItem = styled.div`
   height: 300px;
-  width: 28%;
+  width: 100%;
   display: flex;
-  margin-top: 40px;
+  margin-top: 30px;
   flex-direction: row;
   flex-wrap: nowrap;
-  padding: 25px;
   background: #ffffff;
   box-shadow: 5px 5px 20px rgba(133, 133, 133, 0.2);
   border-radius: 30px;
-  gap: 10px;
 
   .img {
-    width: 20vw;
+    width: 45%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
     img {
-      max-width: 200px;
-      max-height: 200px;
+      max-width: 90%;
     }
   }
 
   .label {
-    width: 20vw;
-    height: 100%;
+    width: 55%;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
+    padding: 10px;
   }
 
   .labelTop {
     width: 100%;
+
     h3 {
       width: 100%;
       font-weight: 700;
-      font-size: 20px;
-      line-height: 22px;
+      font-size: 16px;
+      line-height: 15px;
       color: #474747;
     }
 
     .p {
       width: 100%;
+      max-height: 120px;
+      overflow-y: scroll;
       font-weight: 400;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 18px;
       color: #474747;
+      @media (min-height: 120px) {
+        overflow-y: auto;
+      }
     }
   }
 
@@ -88,7 +92,8 @@ const StyledItem = styled.div`
     align-items: center;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-top: 50px;
+    margin-top: 10px;
+
     .price {
       font-weight: 700;
       font-size: 20px;
@@ -101,7 +106,49 @@ const StyledItem = styled.div`
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
-      gap: 20px;
+      gap: 10px;
+    }
+  }
+
+  .cart:hover,
+  .heart:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 20px rgba(255, 210, 178, 0.5);
+  }
+
+  @media only screen and (min-width: 600px) {
+    width: 48%;
+    .controllers {
+      gap: 12px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: 31%;
+    margin-top: 40px;
+    gap: 10px;
+
+    .img {
+      width: 55%;
+    }
+
+    .labelTop {
+      h3 {
+        font-size: 20px;
+        line-height: 22px;
+      }
+
+      .p {
+        font-size: 16px;
+      }
+    }
+
+    .priceAndControllers {
+      margin-top: 50px;
+
+      .controllers {
+        gap: 20px;
+      }
     }
   }
 `;

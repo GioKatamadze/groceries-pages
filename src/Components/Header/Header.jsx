@@ -1,3 +1,4 @@
+import { useState } from "react";
 import StyledHeader from "./HeaderStyles.js";
 import SearchBar from "./SearchBar/SearchBar.jsx";
 import Heart from "../../Assets/heart.png";
@@ -5,7 +6,7 @@ import User from "../../Assets/avatar.png";
 import Cart from "../../Assets/Icon.png";
 import Settings from "../../Assets/settings.png";
 
-const Header = () => {
+const Header = ({ data, setIsSearching, setSearchResult }) => {
   return (
     <StyledHeader>
       <div className="mainWrapper">
@@ -15,7 +16,10 @@ const Header = () => {
 
         <div className="searchWrapper">
           <img src={Settings} />
-          <SearchBar />
+          <SearchBar
+            setIsSearching={setIsSearching}
+            setSearchResult={setSearchResult}
+          />
         </div>
 
         <div className="sideNav">

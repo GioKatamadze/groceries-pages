@@ -1,22 +1,17 @@
 import CategoriesWrapper from "./categoriesStyles.js";
 
-const Categories = (props) => {
-  const { handleClick } = props;
-
+const Categories = ({ setCategory }) => {
   const handleDiv1Click = () => {
-    handleClick("all");
+    setCategory("all");
   };
-
   const handleDiv2Click = () => {
-    handleClick("drinks");
+    setCategory("drinks");
   };
-
   const handleDiv3Click = () => {
-    handleClick("fruit");
+    setCategory("fruit");
   };
-
   const handleDiv4Click = () => {
-    handleClick("bakery");
+    setCategory("bakery");
   };
 
   return (

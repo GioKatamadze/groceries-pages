@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const StyledWrapper = styled.div`
   width: 100vw;
   height: max-content;
+  display: flex;
   justify-content: center;
-  display: ${(props) =>
-    props.category !== "all" || props.isSearching ? "none" : "flex"};
 
   .mainWrapper {
     width: 90%;

@@ -1,8 +1,16 @@
+import { useState } from "react";
 import StyledItem from "./ProductComponentStyles.js";
-import Cart from "../../Assets/cartSVG.jsx";
-import Heart from "../../Assets/heartSVG.jsx";
+import FullHeart from "../../../Assets/FullheartSVG.jsx";
+import EmptyHeart from "../../../Assets/EmptyheartSVG.jsx";
+import FullCart from "../../../Assets/FullcartSVG.jsx";
+import EmptyCart from "../../../Assets/EmptycartSVG.jsx";
 
 const Products = (data) => {
+  const [isWished, setIsWished] = useState(false);
+  const AddToWishlist = () => {
+    setIsWished(true);
+    console.log(isWished);
+  };
   const mappedProducts = data.map((product) => {
     return (
       <StyledItem key={product.id}>
@@ -25,8 +33,8 @@ const Products = (data) => {
             <div className="priceAndControllers">
               <div className="price">{product.price}</div>
               <div className="controllers">
-                <Cart className="cart" />
-                <Heart className="heart" />
+                <EmptyCart className="cart" onclick={AddToWishlist} />
+                <EmptyHeart className="heart" />
               </div>
             </div>
           </div>
