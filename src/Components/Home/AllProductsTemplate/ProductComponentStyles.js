@@ -10,6 +10,11 @@ const StyledItem = styled.div`
   background: #ffffff;
   box-shadow: 5px 5px 20px rgba(133, 133, 133, 0.2);
   border-radius: 30px;
+  transition: 0.2s;
+  :hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 20px rgba(133, 133, 133, 0.5);
+  }
 
   .img {
     width: 45%;
@@ -46,7 +51,7 @@ const StyledItem = styled.div`
 
     .p {
       width: 100%;
-      max-height: 120px;
+      max-height: 110px;
       overflow-y: scroll;
       font-weight: 400;
       font-size: 14px;
@@ -110,8 +115,8 @@ const StyledItem = styled.div`
     }
   }
 
-  .cart:hover,
-  .heart:hover {
+  .cart,
+  .heart {
     cursor: pointer;
     box-shadow: 5px 5px 20px rgba(255, 210, 178, 0.5);
   }

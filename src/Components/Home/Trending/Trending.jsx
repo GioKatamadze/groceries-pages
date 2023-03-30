@@ -18,7 +18,9 @@ const TrendingItems = ({
     <StyledWrapper category={category} isSearching={isSearching}>
       <div className="mainWrapper">
         <h2>Trending Items</h2>
-        <div className="itemsWrapper">{Products(filteredItems)}</div>
+        <div className="itemsWrapper">
+          {Products(filteredItems, cart, setCart, wishlist, setWishlist)}
+        </div>
       </div>
     </StyledWrapper>
   );

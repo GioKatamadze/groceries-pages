@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import getData from "../../Services/DataService.js";
 import StyledHomePage from "./HomePageStyles";
-import Settings from "../../Assets/settings.png";
 import Header from "../../Components/Header/Header.jsx";
 import SmallScreenSearchbar from "../../Components/smallScreenSearchbar/SmallScreenSearcbar.jsx";
 import Categories from "../../Components/Home/categories/categories.jsx";
-import SearchBar from "../../Components/Header/SearchBar/SearchBar.jsx";
 import TrendingItems from "../../Components/Home/Trending/Trending.jsx";
 import ItemsByCategory from "../../Components/Home/ByCategory/itemsByCategory.jsx";
 
@@ -34,7 +32,8 @@ const Home = () => {
   return (
     <StyledHomePage>
       <Header
-        data={data}
+        cart={cart}
+        wishlist={wishlist}
         setIsSearching={setIsSearching}
         setSearchResult={setSearchResult}
       />
@@ -59,6 +58,7 @@ const Home = () => {
         searchResult={searchResult}
         wishlist={wishlist}
         setCart={setCart}
+        cart={cart}
         setWishlist={setWishlist}
       />
     </StyledHomePage>

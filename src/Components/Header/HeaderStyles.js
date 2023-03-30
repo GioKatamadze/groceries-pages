@@ -18,10 +18,13 @@ const StyledHeader = styled.div`
   }
 
   .title {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 10px;
     color: black;
+    :hover {
+      cursor: pointer;
+    }
   }
 
   .searchWrapper {
@@ -37,13 +40,17 @@ const StyledHeader = styled.div`
     gap: 10px;
 
     .heart,
-    .cart {
+    .cart,
+    .user {
       position: relative;
       z-index: 1;
-      padding: 15px 15px 0 0;
+      padding: 0 10px 0 0;
       img {
         width: 30px;
         height: auto;
+      }
+      :hover {
+        cursor: pointer;
       }
     }
 
@@ -54,14 +61,19 @@ const StyledHeader = styled.div`
 
     .wishCounter,
     .cartCounter {
-      width: 13px;
-      height: 13px;
+      width: 18px;
+      height: 18px;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: -15px;
+      right: -2px;
       border-radius: 100%;
       z-index: 2;
       opacity: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 13px;
     }
 
     .wishCounter {
@@ -78,6 +90,7 @@ const StyledHeader = styled.div`
     }
 
     .sideNav {
+      transform: translateY(-10px);
       .heart,
       .cart {
         padding: 18px 18px 0 0;
@@ -92,8 +105,10 @@ const StyledHeader = styled.div`
 
       .wishCounter,
       .cartCounter {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
+        top: -5px;
+        right: 0;
       }
     }
   }
@@ -134,8 +149,10 @@ const StyledHeader = styled.div`
 
       .wishCounter,
       .cartCounter {
-        width: 20px;
-        height: 20px;
+        width: 21px;
+        height: 21px;
+        top: 0;
+        right: 0;
       }
     }
   }

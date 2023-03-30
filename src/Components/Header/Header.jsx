@@ -1,16 +1,43 @@
-import { useState } from "react";
 import StyledHeader from "./HeaderStyles.js";
 import SearchBar from "./SearchBar/SearchBar.jsx";
 import Heart from "../../Assets/heart.png";
 import User from "../../Assets/avatar.png";
 import Cart from "../../Assets/Icon.png";
 import Settings from "../../Assets/settings.png";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ data, setIsSearching, setSearchResult }) => {
+const Header = ({ cart, wishlist, setIsSearching, setSearchResult }) => {
+  const navigate = useNavigate();
+  const wishCount = wishlist.length;
+  const cartCount = cart.length;
+
+  const gotoHome = () => {
+    navigate("/");
+  };
+
+  const gotoCheckout = () => {
+    navigate("/checkout");
+  };
+
+  const wishCounter = () => {
+    if (wishCount >= 1) {
+      return <div className="wishCounter">{wishCount}</div>;
+    } else {
+      return;
+    }
+  };
+
+  const cartCounter = () => {
+    if (cartCount >= 1) {
+      return <div className="cartCounter">{cartCount}</div>;
+    } else {
+      return;
+    }
+  };
   return (
     <StyledHeader>
       <div className="mainWrapper">
-        <div className="title">
+        <div className="title" onClick={gotoHome}>
           <h1>GROCERIES</h1>
         </div>
 
@@ -24,14 +51,14 @@ const Header = ({ data, setIsSearching, setSearchResult }) => {
 
         <div className="sideNav">
           <div className="heart">
-            <div className="wishCounter"></div>
+            {wishCounter()}
             <img src={Heart} />
           </div>
           <div className="user">
             <img src={User} />
           </div>
-          <div className="cart">
-            <div className="cartCounter"></div>
+          <div className="cart" onClick={gotoCheckout}>
+            {cartCounter()}
             <img src={Cart} />
           </div>
         </div>

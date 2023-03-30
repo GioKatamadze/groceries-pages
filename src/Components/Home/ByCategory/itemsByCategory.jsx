@@ -1,5 +1,6 @@
-import { StyledWrapper } from "./itemsByCategoryStyles.js";
+import { StyledWrapper, StyledItem } from "./itemsByCategoryStyles.js";
 import Products from "../AllProductsTemplate/Products.jsx";
+import { useEffect, useState } from "react";
 
 const ItemsByCategory = ({
   data,
@@ -11,22 +12,24 @@ const ItemsByCategory = ({
   wishlist,
   setWishlist,
 }) => {
+  const [dataToMap, setDataToMap] = useState(data);
+
   const DataDeterminer = () => {
     if (!isSearching) {
       if (category === "all") {
-        return data;
+        setDataToMap(data);
       } else {
         const filteredItems = data.filter((item) => {
           return item.type === category;
         });
-        return filteredItems;
+        setDataToMap(filteredItems);
       }
     }
     if (isSearching) {
       const filteredItems = data.filter((item) =>
         item.name.toLowerCase().includes(searchResult)
       );
-      return filteredItems;
+      setDataToMap(filteredItems);
     }
   };
 
@@ -46,13 +49,17 @@ const ItemsByCategory = ({
     }
   };
 
-  console.log(isSearching);
+  useEffect(() => {
+    DataDeterminer();
+  }, [isSearching, category]);
 
   return (
     <StyledWrapper>
       <div className="mainWrapper">
         <h2>{TitleDeterminer()}</h2>
-        <div className="itemsWrapper">{Products(DataDeterminer())}</div>
+        <div className="itemsWrapper">
+          {Products(dataToMap, cart, setCart, wishlist, setWishlist)}
+        </div>
       </div>
     </StyledWrapper>
   );

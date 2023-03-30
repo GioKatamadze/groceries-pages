@@ -1,17 +1,38 @@
-import { useState } from "react";
 import StyledItem from "./ProductComponentStyles.js";
 import FullHeart from "../../../Assets/FullheartSVG.jsx";
 import EmptyHeart from "../../../Assets/EmptyheartSVG.jsx";
 import FullCart from "../../../Assets/FullcartSVG.jsx";
 import EmptyCart from "../../../Assets/EmptycartSVG.jsx";
 
-const Products = (data) => {
-  const [isWished, setIsWished] = useState(false);
-  const AddToWishlist = () => {
-    setIsWished(true);
-    console.log(isWished);
+const Products = (dataToMap, cart, setCart, wishlist, setWishlist) => {
+  const toggleObjectInArray = (obj, arr, setArr) => {
+    const index = arr.findIndex((item) => item.id === obj.id);
+    if (index === -1) {
+      setArr([...arr, obj]);
+    } else {
+      const updatedArr = [...arr];
+      updatedArr.splice(index, 1);
+      setArr(updatedArr);
+    }
   };
-  const mappedProducts = data.map((product) => {
+
+  const Hearts = (product) => {
+    if (wishlist.some((i) => i.id === product.id)) {
+      return <FullHeart className="heart" />;
+    } else {
+      return <EmptyHeart className="heart" />;
+    }
+  };
+
+  const Carts = (product) => {
+    if (cart.some((i) => i.id === product.id)) {
+      return <FullCart className="cart" />;
+    } else {
+      return <EmptyCart className="cart" />;
+    }
+  };
+
+  const mappedProducts = dataToMap.map((product) => {
     return (
       <StyledItem key={product.id}>
         <div className="img">
@@ -33,8 +54,18 @@ const Products = (data) => {
             <div className="priceAndControllers">
               <div className="price">{product.price}</div>
               <div className="controllers">
-                <EmptyCart className="cart" onclick={AddToWishlist} />
-                <EmptyHeart className="heart" />
+                <div
+                  onClick={() => toggleObjectInArray(product, cart, setCart)}
+                >
+                  {Carts(product)}
+                </div>
+                <div
+                  onClick={() =>
+                    toggleObjectInArray(product, wishlist, setWishlist)
+                  }
+                >
+                  {Hearts(product)}
+                </div>
               </div>
             </div>
           </div>
