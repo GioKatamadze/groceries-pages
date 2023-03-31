@@ -1,17 +1,10 @@
 import { StyledWrapper, StyledItem } from "./itemsByCategoryStyles.js";
 import Products from "../AllProductsTemplate/Products.jsx";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../../AppContext.js";
 
-const ItemsByCategory = ({
-  data,
-  category,
-  isSearching,
-  searchResult,
-  cart,
-  setCart,
-  wishlist,
-  setWishlist,
-}) => {
+const ItemsByCategory = () => {
+  const { data, category, isSearching, searchResult } = useContext(AppContext);
   const [dataToMap, setDataToMap] = useState(data);
 
   const DataDeterminer = () => {
@@ -51,15 +44,13 @@ const ItemsByCategory = ({
 
   useEffect(() => {
     DataDeterminer();
-  }, [isSearching, category]);
+  }, [isSearching, category, data]);
 
   return (
     <StyledWrapper>
       <div className="mainWrapper">
         <h2>{TitleDeterminer()}</h2>
-        <div className="itemsWrapper">
-          {Products(dataToMap, cart, setCart, wishlist, setWishlist)}
-        </div>
+        <div className="itemsWrapper">{Products(dataToMap)}</div>
       </div>
     </StyledWrapper>
   );

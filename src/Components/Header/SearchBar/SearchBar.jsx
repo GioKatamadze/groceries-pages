@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../../AppContext.js";
 
 const StyledInput = styled.input`
   width: 90%;
@@ -18,7 +19,8 @@ const StyledInput = styled.input`
   }
 `;
 
-const SearchBar = ({ setIsSearching, setSearchResult }) => {
+const SearchBar = () => {
+  const { setIsSearching, setSearchResult } = useContext(AppContext);
   const handleChange = async (event) => {
     if (event.target.value === "") {
       setIsSearching(false);

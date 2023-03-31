@@ -3,12 +3,15 @@ import FullHeart from "../../../Assets/FullheartSVG.jsx";
 import EmptyHeart from "../../../Assets/EmptyheartSVG.jsx";
 import FullCart from "../../../Assets/FullcartSVG.jsx";
 import EmptyCart from "../../../Assets/EmptycartSVG.jsx";
+import { useContext } from "react";
+import { AppContext } from "../../../AppContext.js";
 
-const Products = (dataToMap, cart, setCart, wishlist, setWishlist) => {
+const Products = (dataToMap) => {
+  const { cart, setCart, wishlist, setWishlist } = useContext(AppContext);
   const toggleObjectInArray = (obj, arr, setArr) => {
     const index = arr.findIndex((item) => item.id === obj.id);
     if (index === -1) {
-      setArr([...arr, obj]);
+      setArr([...arr, obj].map((item) => ({ ...item, count: 1 })));
     } else {
       const updatedArr = [...arr];
       updatedArr.splice(index, 1);

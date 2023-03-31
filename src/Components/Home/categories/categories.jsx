@@ -1,32 +1,23 @@
+import { useContext } from "react";
+import { AppContext } from "../../../AppContext.js";
 import CategoriesWrapper from "./categoriesStyles.js";
 
-const Categories = ({ setCategory }) => {
-  const handleDiv1Click = () => {
-    setCategory("all");
-  };
-  const handleDiv2Click = () => {
-    setCategory("drinks");
-  };
-  const handleDiv3Click = () => {
-    setCategory("fruit");
-  };
-  const handleDiv4Click = () => {
-    setCategory("bakery");
-  };
+const Categories = () => {
+  const { setCategory } = useContext(AppContext);
 
   return (
     <CategoriesWrapper>
       <div className="mainWrapper">
-        <div className="button" onClick={handleDiv1Click}>
+        <div className="button" onClick={() => setCategory("all")}>
           All items
         </div>
-        <div className="button" onClick={handleDiv2Click}>
+        <div className="button" onClick={() => setCategory("drinks")}>
           Drinks
         </div>
-        <div className="button" onClick={handleDiv3Click}>
+        <div className="button" onClick={() => setCategory("fruit")}>
           Fruit
         </div>
-        <div className="button" onClick={handleDiv4Click}>
+        <div className="button" onClick={() => setCategory("bakery")}>
           Bakery
         </div>
       </div>

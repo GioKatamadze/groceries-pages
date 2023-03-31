@@ -5,8 +5,12 @@ import User from "../../Assets/avatar.png";
 import Cart from "../../Assets/Icon.png";
 import Settings from "../../Assets/settings.png";
 import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { AppContext } from "../../AppContext.js";
 
-const Header = ({ cart, wishlist, setIsSearching, setSearchResult }) => {
+const Header = () => {
+  const { cart, wishlist } = useContext(AppContext);
+
   const navigate = useNavigate();
   const wishCount = wishlist.length;
   const cartCount = cart.length;
@@ -43,10 +47,7 @@ const Header = ({ cart, wishlist, setIsSearching, setSearchResult }) => {
 
         <div className="searchWrapper">
           <img src={Settings} />
-          <SearchBar
-            setIsSearching={setIsSearching}
-            setSearchResult={setSearchResult}
-          />
+          <SearchBar />
         </div>
 
         <div className="sideNav">
