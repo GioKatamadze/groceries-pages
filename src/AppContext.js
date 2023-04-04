@@ -9,6 +9,8 @@ export const AppProvider = ({ children }) => {
   const [searchResult, setSearchResult] = useState("");
   const [category, setCategory] = useState("all");
   const [data, setData] = useState([]);
+  const [freeColaCount, setFreeColaCount] = useState(0);
+  const [freeCoffeeCount, setFreeCoffeeCount] = useState(0);
 
   const appState = {
     wishlist,
@@ -23,6 +25,10 @@ export const AppProvider = ({ children }) => {
     setCategory,
     data,
     setData,
+    freeColaCount,
+    setFreeColaCount,
+    freeCoffeeCount,
+    setFreeCoffeeCount,
   };
 
   return <AppContext.Provider value={appState}>{children}</AppContext.Provider>;

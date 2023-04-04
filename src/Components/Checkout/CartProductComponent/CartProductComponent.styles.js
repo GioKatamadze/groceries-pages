@@ -1,16 +1,60 @@
 import styled from "styled-components";
 
-const StyledItem = styled.div`
-  min-height: 100px;
+export const StyledWrapper = styled.div`
+  width: 100%;
+  min-height: 50px;
+  height: 150px;
+  margin-top: 30px;
+  background-color: red;
+  border-radius: 32px;
+
+  .offerDiv {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .more {
+      width: max-content;
+      height: max-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(255, 148, 70, 0.5);
+      box-shadow: 5px 5px 20px rgba(255, 210, 178, 0.5);
+      border-radius: 10px;
+      padding: 3px 10px;
+      width: max-content;
+      background-color: white;
+      color: black;
+      margin: auto 15px;
+      font-size: 15px;
+    }
+
+    .offerName {
+      display: block;
+      color: white;
+      margin-right: 15px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1;
+    }
+  }
+`;
+
+export const StyledItem = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 30px;
   flex-direction: row;
   flex-wrap: nowrap;
   background: #ffffff;
   box-shadow: 5px 5px 20px rgba(133, 133, 133, 0.2);
   border-radius: 30px;
   transition: 0.2s;
+  height: ${(props) => (props.offer === true ? "75%" : "100%")};
+
   :hover {
     cursor: pointer;
     box-shadow: 5px 5px 20px rgba(133, 133, 133, 0.5);
@@ -18,13 +62,14 @@ const StyledItem = styled.div`
 
   .img {
     width: 30%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 30px;
 
     img {
       max-width: 80%;
+      max-height: 100%;
     }
   }
 
@@ -47,12 +92,16 @@ const StyledItem = styled.div`
 
     .p {
       width: 100%;
-      height: max-content;
+      max-height: 90px;
+      overflow-y: scroll;
       font-weight: 400;
       font-size: 14px;
       line-height: 18px;
       color: #474747;
       margin-bottom: 10px;
+      @media (min-height: 90px) {
+        overflow-y: auto;
+      }
     }
   }
 
@@ -65,15 +114,6 @@ const StyledItem = styled.div`
     flex-wrap: nowrap;
   }
 
-  .quantity {
-    width: 100%;
-    height: 100%;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #ffffff;
-  }
-
   .quantityAvailable {
     width: 100%;
     height: max-content;
@@ -83,6 +123,7 @@ const StyledItem = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
 
+    .zero,
     .less,
     .more {
       border: 1px solid rgba(255, 148, 70, 0.5);
@@ -90,6 +131,9 @@ const StyledItem = styled.div`
       border-radius: 10px;
       padding: 3px 10px;
       width: max-content;
+    }
+    .zero {
+      background: rgba(220, 20, 60);
     }
     .less {
       background: rgba(255, 147, 69, 0.8);
@@ -99,8 +143,13 @@ const StyledItem = styled.div`
     }
   }
 
-  .quantity {
+  .quantityBox {
     width: 100%;
+    height: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -187,7 +236,6 @@ const StyledItem = styled.div`
 
     .labelTop {
       width: 45%;
-      margin-top: 2vh;
       h3 {
         font-size: 20px;
         line-height: 0;
@@ -200,15 +248,12 @@ const StyledItem = styled.div`
   }
 
   @media only screen and (min-width: 1024px) {
-    margin-top: 40px;
-
     .img {
       width: 25%;
     }
 
     .labelTop {
       width: 45%;
-      margin-top: 45px;
       h3 {
         font-size: 20px;
         line-height: 0;
@@ -225,14 +270,14 @@ const StyledItem = styled.div`
       flex-direction: row;
     }
 
-    .quantity {
+    .quantityBox {
       width: 100%;
       height: 100%;
       flex-direction: column;
       flex-wrap: nowrap;
       justify-content: flex-start;
       align-items: center;
-      margin-top: 50px;
+      margin-top: 20px;
     }
 
     .quantityControllers {
@@ -251,17 +296,16 @@ const StyledItem = styled.div`
     }
 
     .priceAndControllers {
-      margin-top: 50px;
+      margin-top: 20px;
     }
 
     .quantityAvailable {
       .less,
-      .more {
+      .more,
+      .zero {
         margin-top: 20px;
         padding: 5px 15px;
       }
     }
   }
 `;
-
-export default StyledItem;

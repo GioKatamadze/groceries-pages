@@ -5,22 +5,30 @@ import getData from "./Services/DataService.js";
 import Home from "./Pages/Home/HomePage.jsx";
 import Checkout from "./Pages/Checkout/CheckoutPage.jsx";
 
-function App() {
-  const { data, setData } = useContext(AppContext);
+function useData() {
+  const { setData } = useContext(AppContext);
 
   useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getData();
+        setData(data);
+        localStorage.setItem("data", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    }
     const savedData = localStorage.getItem("data");
-    const fetchData = async () => {
-      const fetchedData = await getData();
-      setData(fetchedData);
-      localStorage.setItem("data", JSON.stringify(fetchedData));
-    };
-    if (savedData === null) {
-      fetchData();
-    } else {
+    if (savedData) {
       setData(JSON.parse(savedData));
+    } else {
+      fetchData();
     }
   }, []);
+}
+
+function App() {
+  useData();
 
   return (
     <div className="App" style={{ maxWidth: "100vw", height: "100%" }}>

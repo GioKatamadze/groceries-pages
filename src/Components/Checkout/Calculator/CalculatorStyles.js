@@ -18,6 +18,7 @@ export const StyledWrapper = styled.div`
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
+    position: relative;
 
     h2 {
       font-weight: 700;
@@ -43,4 +44,28 @@ export const Hr = styled.div`
   width: 90%;
   height: 1px;
   background-color: #e6e6eb;
+`;
+
+export const Button = styled.div`
+  display: none;
+  @media only screen and (min-width: 600px) {
+    position: absolute;
+    width: auto;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7fd287;
+    border-radius: 8px;
+    padding: 16px 32px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    color: #ffffff;
+    transition: 0.2s;
+    :hover {
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  }
 `;

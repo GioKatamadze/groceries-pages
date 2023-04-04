@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledWrapper = styled.div`
+const StyledWrapper = styled.div`
   width: 100vw;
   height: max-content;
   justify-content: center;
@@ -47,3 +47,5 @@ export const StyledWrapper = styled.div`
     }
   }
 `;
+
+export default StyledWrapper;

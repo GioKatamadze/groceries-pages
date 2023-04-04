@@ -8,15 +8,14 @@ const instance = axios.create({
   },
 });
 
-const getData = () => {
-  return instance
-    .get("/s?category=all")
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+const getData = async () => {
+  try {
+    const response = await instance.get("/s?category=all");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch data");
+  }
 };
 
 export default getData;

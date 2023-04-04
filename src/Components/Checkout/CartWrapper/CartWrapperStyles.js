@@ -4,8 +4,7 @@ export const StyledWrapper = styled.div`
   width: 100vw;
   height: max-content;
   justify-content: center;
-  display: ${(props) =>
-    props.category !== "all" || props.isSearching ? "none" : "flex"};
+  display: ${(props) => (props.isSearching ? "none" : "flex")};
 
   .mainWrapper {
     width: 90%;
@@ -19,18 +18,29 @@ export const StyledWrapper = styled.div`
   }
 
   .itemsWrapper {
-    gap: 2%;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  @media only screen and (min-width: 600px) {
-    .itemsWrapper {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 4%;
-    }
+  .itemsWrapper2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .offerSectionTitle {
+    display: ${(props) =>
+      props.freeColaCount === 0 && props.freeCoffeeCount === 0
+        ? "none"
+        : "block"};
   }
 
   @media only screen and (min-width: 1024px) {
@@ -42,8 +52,8 @@ export const StyledWrapper = styled.div`
       font-size: 32px;
     }
 
-    .itemsWrapper {
-      gap: 3.5%;
+    .itemsWrapper2 {
+      margin-top: -40px;
     }
   }
 `;

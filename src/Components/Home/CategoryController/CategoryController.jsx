@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../../AppContext.js";
-import CategoriesWrapper from "./categoriesStyles.js";
+import CategoriesWrapper from "./CategoryController.styles.js";
 
 const Categories = () => {
   const { setCategory } = useContext(AppContext);

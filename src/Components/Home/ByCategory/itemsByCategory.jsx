@@ -1,5 +1,5 @@
 import { StyledWrapper, StyledItem } from "./itemsByCategoryStyles.js";
-import Products from "../AllProductsTemplate/Products.jsx";
+import Products from "../ProductComponent/ProductComponent.jsx";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../AppContext.js";
 
@@ -7,49 +7,36 @@ const ItemsByCategory = () => {
   const { data, category, isSearching, searchResult } = useContext(AppContext);
   const [dataToMap, setDataToMap] = useState(data);
 
-  const DataDeterminer = () => {
+  const title =
+    isSearching || category === "all"
+      ? isSearching
+        ? "Searched items"
+        : "All items"
+      : category === "drinks"
+      ? "Drinks"
+      : category === "fruit"
+      ? "Fruit"
+      : "Bakery";
+
+  useEffect(() => {
     if (!isSearching) {
-      if (category === "all") {
-        setDataToMap(data);
-      } else {
-        const filteredItems = data.filter((item) => {
-          return item.type === category;
-        });
-        setDataToMap(filteredItems);
-      }
-    }
-    if (isSearching) {
+      const filteredItems =
+        category === "all"
+          ? data
+          : data.filter((item) => item.type === category);
+      setDataToMap(filteredItems);
+    } else {
       const filteredItems = data.filter((item) =>
         item.name.toLowerCase().includes(searchResult)
       );
       setDataToMap(filteredItems);
     }
-  };
-
-  const TitleDeterminer = () => {
-    if (isSearching) {
-      return "Searched items";
-    } else {
-      if (category === "all") {
-        return "All items";
-      } else if (category === "drinks") {
-        return "Drinks";
-      } else if (category === "fruit") {
-        return "Fruit";
-      } else {
-        return "Bakery";
-      }
-    }
-  };
-
-  useEffect(() => {
-    DataDeterminer();
-  }, [isSearching, category, data]);
+  }, [isSearching, category, data, searchResult]);
 
   return (
     <StyledWrapper>
       <div className="mainWrapper">
-        <h2>{TitleDeterminer()}</h2>
+        <h2>{title}</h2>
         <div className="itemsWrapper">{Products(dataToMap)}</div>
       </div>
     </StyledWrapper>

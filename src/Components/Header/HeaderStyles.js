@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const StyledHeader = styled.div`
+export const StyledHeader = styled.div`
   width: 100vw;
   height: max-content;
   display: flex;
   justify-content: center;
 
-  .mainWrapper {
+  .headerWrapper {
     width: 90%;
     height: 100%;
     display: flex;
@@ -31,90 +31,14 @@ const StyledHeader = styled.div`
     display: none;
   }
 
-  .sideNav {
-    height: max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: nowrap;
-    gap: 10px;
-
-    .heart,
-    .cart,
-    .user {
-      position: relative;
-      z-index: 1;
-      padding: 0 10px 0 0;
-      img {
-        width: 30px;
-        height: auto;
-      }
-      :hover {
-        cursor: pointer;
-      }
-    }
-
-    .user img {
-      width: 30px;
-      height: auto;
-    }
-
-    .wishCounter,
-    .cartCounter {
-      width: 18px;
-      height: 18px;
-      position: absolute;
-      top: -15px;
-      right: -2px;
-      border-radius: 100%;
-      z-index: 2;
-      opacity: 0.8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 13px;
-    }
-
-    .wishCounter {
-      background-color: #e86f6f;
-    }
-
-    .cartCounter {
-      background-color: #0098ed;
-    }
-  }
   @media only screen and (min-width: 600px) {
     .title {
       font-size: 15px;
     }
-
-    .sideNav {
-      transform: translateY(-10px);
-      .heart,
-      .cart {
-        padding: 18px 18px 0 0;
-        img {
-          width: 35px;
-        }
-      }
-
-      .user img {
-        width: 35px;
-      }
-
-      .wishCounter,
-      .cartCounter {
-        width: 20px;
-        height: 20px;
-        top: -5px;
-        right: 0;
-      }
-    }
   }
 
   @media only screen and (min-width: 1024px) {
-    .mainWrapper {
+    .headerWrapper {
       margin-top: 10vh;
     }
 
@@ -140,7 +64,90 @@ const StyledHeader = styled.div`
         right: 5vw;
       }
     }
+  }
+`;
 
+export const StyledNav = styled.div`
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  gap: 10px;
+
+  .heart,
+  .cart,
+  .user {
+    position: relative;
+    z-index: 1;
+    padding: 0 10px 0 0;
+    img {
+      width: 30px;
+      height: auto;
+    }
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .wishCounter,
+  .cartCounter {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: -2px;
+    border-radius: 100%;
+    z-index: 2;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 13px;
+  }
+
+  .wishCounter {
+    background-color: #e86f6f;
+    top: -17px;
+  }
+
+  .cartCounter {
+    background-color: #0098ed;
+    top: -15px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    transform: translateY(-10px);
+
+    .heart,
+    .cart {
+      padding: 18px 18px 0 0;
+      img {
+        width: 35px;
+      }
+    }
+
+    .user img {
+      width: 35px;
+    }
+
+    .cartCounter,
+    .wishCounter {
+      width: 20px;
+      height: 20px;
+      right: 0;
+    }
+
+    .cartCounter {
+      top: -2px;
+    }
+
+    .wishCounter {
+      top: -5px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
     .sideNav {
       .heart,
       .cart {
@@ -157,5 +164,3 @@ const StyledHeader = styled.div`
     }
   }
 `;
-
-export default StyledHeader;

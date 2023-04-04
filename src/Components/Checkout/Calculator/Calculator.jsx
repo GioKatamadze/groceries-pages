@@ -1,4 +1,4 @@
-import { StyledWrapper, Hr } from "./CalculatorStyles.js";
+import { StyledWrapper, Hr, Button } from "./CalculatorStyles.js";
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../../AppContext.js";
 
@@ -30,9 +30,10 @@ const Calculator = () => {
         <h3>£0.00</h3>
       </div>
       <Hr />
-      <div className="calculatorDiv">
+      <div className="calculatorDiv" id="checkoutDiv">
         <h2>Total</h2>
         <h3>£{total}</h3>
+        <Button>Checkout</Button>
       </div>
       <Hr />
     </StyledWrapper>
